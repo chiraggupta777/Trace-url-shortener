@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | Trace</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI",
+                Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        :root {
+            --bg: #090d0b;
+            --surface: #101613;
+            --surface-secondary: #141b17;
+            --border: #26332d;
+            --border-strong: #334139;
+            --text: #f5f7f6;
+            --secondary: #9aa7a0;
+            --muted: #6f7c74;
+            --accent: #63d39b;
+            --accent-hover: #7be0ab;
+            --accent-surface: #14261d;
+        }
+
+        body {
+            min-height: 100vh;
+            background: var(--bg);
+
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 430px;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border-strong);
+            border-radius: 24px;
+            padding: 42px 38px;
+
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+
+            box-shadow:
+                0 30px 80px rgba(0, 0, 0, 0.45),
+                inset 0 1px 0 rgba(255, 255, 255, 0.04);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 32px;
+        }
+
+        .logo {
+            width: 38px;
+            height: 38px;
+            border-radius: 11px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: var(--accent);
+            color: #07100b;
+
+            font-size: 19px;
+            font-weight: 800;
+
+            box-shadow: none;
+        }
+
+        .brand-name {
+            font-size: 21px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .heading {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .heading h1 {
+            font-size: 30px;
+            letter-spacing: -1px;
+            margin-bottom: 9px;
+        }
+
+        .heading p {
+            color: var(--secondary);
+            font-size: 14px;
+        }
+
+        .error {
+            background: var(--surface-secondary);
+            border: 1px solid var(--border-strong);
+            color: var(--secondary);
+
+            padding: 11px 13px;
+            border-radius: 10px;
+
+            font-size: 13px;
+            margin-bottom: 18px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 19px;
+        }
+
+        label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px 15px;
+
+            border-radius: 11px;
+            border: 1px solid var(--border);
+
+            background: #0d1210;
+            color: var(--text);
+
+            outline: none;
+            font-size: 14px;
+
+            transition: all 0.2s ease;
+        }
+
+        input::placeholder {
+            color: var(--muted);
+        }
+
+        input:focus {
+            border-color: var(--accent);
+            background: var(--surface-secondary);
+            box-shadow: none;
+        }
+
+        .password-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .forgot {
+            font-size: 12px;
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .forgot:hover {
+            color: var(--accent-hover);
+        }
+
+        .login-btn {
+            width: 100%;
+            border: none;
+            outline: none;
+
+            padding: 14px;
+            border-radius: 11px;
+
+            margin-top: 5px;
+
+            color: #07100b;
+            font-size: 14px;
+            font-weight: 700;
+
+            cursor: pointer;
+
+            background: var(--accent);
+
+            box-shadow: none;
+
+            transition: all 0.2s ease;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-1px);
+            background: var(--accent-hover);
+        }
+
+        .login-btn:active {
+            transform: translateY(0);
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            margin: 26px 0;
+
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+            height: 1px;
+            flex: 1;
+            background: var(--border);
+        }
+
+        .signup {
+            text-align: center;
+            font-size: 13px;
+            color: var(--secondary);
+        }
+
+        .signup a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .signup a:hover {
+            color: var(--accent-hover);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 22px;
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                padding: 35px 25px;
+            }
+
+            .heading h1 {
+                font-size: 27px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="card">
+
+            <!-- Brand -->
+            <div class="brand">
+                <div class="logo">↗</div>
+                <div class="brand-name">Shortly</div>
+            </div>
+
+            <!-- Heading -->
+            <div class="heading">
+                <h1>Welcome back</h1>
+                <p>Login to manage your shortened URLs.</p>
+            </div>
+
+            <!-- Error from Express -->
+            <% if (typeof error !=="undefined" && error) { %>
+                <div class="error">
+                    <%= error %>
+                </div>
+                <% } %>
+
+                    <!-- Login Form -->
+                    <form action="/user/login" method="POST">
+
+                        <div class="form-group">
+                            <label for="email">Email address</label>
+
+                            <input type="email" id="email" name="email" placeholder="you@example.com" required
+                                autocomplete="email">
+                        </div>
+
+                        <div class="form-group">
+
+                            <div class="password-row">
+                                <label for="password">Password</label>
+
+                               
+                            </div>
+
+                            <input type="password" id="password" name="password" placeholder="Enter your password"
+                                required autocomplete="current-password">
+                        </div>
+
+                        <button type="submit" class="login-btn">
+                            Login to Trace
+                        </button>
+
+                    </form>
+
+                    <div class="divider">
+                        OR
+                    </div>
+
+                    <div class="signup">
+                        Don't have an account?
+                        <a href="/signup">Create one</a>
+                    </div>
+
+        </div>
+
+        <div class="footer">
+            Short links. Simple sharing.
+        </div>
+
+    </div>
+
+</body>
+
+</html>
