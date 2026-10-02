@@ -732,7 +732,7 @@
                                 <div class="result-row">
 
                                     <div class="result-link" id="shortUrl">
-                                        http://localhost:8001/<%= locals.shortId %>
+                                        <%= locals.shortId %>
                                     </div>
 
                                     <button type="button" class="copy-button" onclick="copyUrl()">
@@ -858,6 +858,13 @@
 
 
     <script>
+
+        const shortUrlElement = document.getElementById("shortUrl");
+
+        if (shortUrlElement) {
+            shortUrlElement.textContent =
+                `${window.location.origin}/${shortUrlElement.textContent.trim()}`;
+        }
 
         function copyUrl() {
 
