@@ -5,66 +5,142 @@
 </p>
 
 <p align="center">
-  A full-stack URL shortening platform built with Node.js, Express.js, MongoDB and EJS.
+  A full-stack URL shortener with authentication, click tracking and analytics.
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Node.js-20+-111827?style=for-the-badge&logo=node.js&logoColor=63D39B" />
-  <img src="https://img.shields.io/badge/Express.js-Backend-111827?style=for-the-badge&logo=express&logoColor=F5F7F6" />
-  <img src="https://img.shields.io/badge/MongoDB-Database-111827?style=for-the-badge&logo=mongodb&logoColor=63D39B" />
-  <img src="https://img.shields.io/badge/EJS-Templates-111827?style=for-the-badge&logo=ejs&logoColor=63D39B" />
+  <img src="https://readme-typing-svg.demolab.com?font=Inter&weight=600&size=22&duration=3000&pause=1000&color=63D39B&center=true&vCenter=true&width=600&lines=Create.+Share.+Track.;Short+links.+Clear+insights." alt="Typing animation" />
 </p>
 
 <p align="center">
-  <a href="#features">Features</a> •
-  <a href="#architecture">Architecture</a> •
-  <a href="#getting-started">Getting Started</a> •
-  <a href="#api-reference">API</a> •
-  <a href="#roadmap">Roadmap</a>
+  <a href="https://trace-url-shortener.onrender.com">🚀 Live Demo</a> •
+  <a href="https://github.com/chiraggupta777/Trace-url-shortener">GitHub</a>
 </p>
-
----
-
-## Overview
-
-**Trace** is a full-stack URL shortener designed around a simple idea:
-
-> Short links should be easy to create, easy to manage, and useful to track.
-
-Users can register, authenticate, create short URLs, access their personal dashboard, and track visits to their generated links.
-
-Unlike a basic URL shortener, Trace associates every generated link with its creator and records visit activity for each redirect.
 
 ---
 
 ## ✨ Features
 
-### 🔗 URL Shortening
+- 🔗 Create unique short URLs
+- 📊 Track visits and click counts
+- 🔐 JWT-based authentication
+- 🛡️ Role-based authorization
+- 📈 Personal analytics dashboard
+- ☁️ MongoDB Atlas + Render deployment
 
-- Generate unique short URLs
-- Redirect short URLs to their original destination
-- Store links in MongoDB
-- Record visit timestamps
-- Copy generated links directly from the UI
+---
 
-### 🔐 Authentication
+## 🛠️ Tech Stack
 
-- User registration
-- User login
-- JWT-based authentication
-- Cookie-based token storage
-- Logout functionality
-- Protected application routes
+**Backend:** Node.js, Express.js  
+**Database:** MongoDB, Mongoose  
+**Frontend:** EJS  
+**Authentication:** JWT, Cookies  
+**Deployment:** Render, MongoDB Atlas
 
-### 🛡️ Role-Based Authorization
+---
 
-Trace includes role-based access control for protected operations.
-
-Protected routes verify the authenticated user's role before allowing access to restricted functionality.
-
-### 👤 User-Specific Links
-
-Every generated URL is associated with its creator through:
+## 🏗️ Architecture
 
 ```text
-CHIRAG
+User
+  ↓
+Express
+  ↓
+Middleware
+  ↓
+Controllers
+  ↓
+Mongoose
+  ↓
+MongoDB Atlas
+```
+
+### URL Flow
+
+```text
+Long URL
+   ↓
+Generate Short ID
+   ↓
+Store in MongoDB
+   ↓
+Short URL
+   ↓
+Track Visit
+   ↓
+Redirect
+```
+
+---
+
+## 📁 Project Structure
+
+```text
+Trace/
+├── controllers/
+├── middleware/
+├── models/
+├── routes/
+├── service/
+├── views/
+├── connections.js
+├── index.js
+└── package.json
+```
+
+---
+
+## 🚀 Getting Started
+
+```bash
+git clone https://github.com/chiraggupta777/Trace-url-shortener.git
+cd Trace-url-shortener
+npm install
+```
+
+Create a `.env` file:
+
+```env
+MONGODB_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+NODE_ENV=development
+```
+
+Run the application:
+
+```bash
+node index.js
+```
+
+---
+
+## 🔮 Future Integrations
+
+- 🔒 Password hashing with bcrypt
+- ⏱️ Link expiration
+- 🔗 Custom short URL aliases
+- 🗑️ Link management and deletion
+- 📊 Advanced analytics
+- 📱 Device and referrer tracking
+- ⚡ Rate limiting
+- 📷 QR code generation
+- 🧪 Automated testing
+
+---
+
+## 🌐 Live Demo
+
+**https://trace-url-shortener.onrender.com**
+
+---
+
+## 👨‍💻 Author
+
+**Chirag Gupta**
+
+[GitHub](https://github.com/chiraggupta777)
+
+<p align="center">
+  <strong>Trace — Short links. Clear insights.</strong>
+</p>
